@@ -6,6 +6,15 @@ target/
 !**/src/main/resources/application.properties
 
 
+# Ignorar dumps e arquivos temporários
+*.sql
+*.db
+*.log
+
+# NÃO ignore migrations!
+!src/main/resources/db/migration/**
+
+
 ### STS ###
 .apt_generated
 .classpath
