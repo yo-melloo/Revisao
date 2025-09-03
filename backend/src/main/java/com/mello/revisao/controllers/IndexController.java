@@ -4,9 +4,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloController {
+public class IndexController {
     @GetMapping("/")
     public String hello() {
-        return "Olá do Spring Boot!";
+        return "Index!!";
     }
 }
