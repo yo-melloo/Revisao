@@ -278,6 +278,15 @@ button:hover {
   max-width: 350px;
 }
 
+.login-panel button {
+  margin: 0px;
+}
+
+.login-panel a {
+  text-decoration: none;
+  color: white;
+}
+
 /* Avatar */
 .login-avatar {
   width: 120px;
@@ -289,6 +298,7 @@ button:hover {
 
 /* Inputs */
 .login-panel input[type="email"],
+.login-panel input[type="text"],
 .login-panel input[type="password"] {
   width: 100%;
   padding: 12px;
