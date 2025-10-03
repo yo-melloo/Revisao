@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: revisao
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "6432:5432" # Mapeia a porta do contêiner para o workspace
+volumes:
+  postgres_data:
