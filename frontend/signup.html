@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Mtech Criar uma conta</title>
+  </head>
+  <body>
+    <header>
+      <nav class="top-nav">
+        <div class="top-nav-title">
+          <h1 class="header-title">Mtech Informática</h1>
+        </div>
+
+        <!-- Hamburger button (opcional) -->
+        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+
+        <ul class="top-nav-list">
+          <li class="has-submenu">
+            <a href="index.html">Página inicial</a>
+            <ul class="submenu" id="submenu-account">
+              <li><a href="#info">Quem somos</a></li>
+              <li><a href="#contato">Contato</a></li>
+            </ul>
+          </li>
+
+          <li class="has-submenu">
+            <a href="#produtos">Produtos</a>
+            <ul class="submenu" id="submenu-products">
+              <li><a href="#perifericos">Periféricos</a></li>
+              <li><a href="#monitores">Monitores</a></li>
+              <li><a href="#computadores">Computadores</a></li>
+              <li><a href="#hardware">Hardware</a></li>
+            </ul>
+          </li>
+
+          <li class="has-submenu">
+            <a href="#carrinho">Carrinho</a>
+            <ul class="submenu" id="submenu-cart">
+              <li><a href="#checkout">Fazer checkout</a></li>
+            </ul>
+          </li>
+
+          <li class="has-submenu">
+            <a href="#conta">Conta</a>
+            <ul class="submenu" id="submenu-account">
+              <li><a href="/frontend/login.html">Login</a></li>
+              <li><a href="#sair">Sair</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="search-box">
+          <input
+            type="text"
+            name="header-search-input"
+            class="search-input"
+            placeholder="Pesquisar..."
+          />
+        </div>
+      </nav>
+    </header>
+
+    <section class="content-section">
+      <div class="login-panel">
+        <img src="images/nouser.png" alt="Usuário" class="login-avatar" />
+
+        <h2>Criar conta</h2>
+
+        <form>
+          <input type="text" placeholder="Nome de Usuário" required />
+          <input type="email" placeholder="E-mail" required />
+          <input type="password" placeholder="Senha" required />
+
+          <button type="submit">Finalizar</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <p class="footer-text">Desenvolvido por @yo-melloo (github)</p>
+    </footer>
+  </body>
+</html>

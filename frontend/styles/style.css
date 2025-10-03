@@ -320,6 +320,7 @@ button:hover {
 }
 
 .login-panel input[type="email"],
+.login-panel input[type="text"],
 .login-panel input[type="password"] {
   width: 100%;
   padding: 12px;
