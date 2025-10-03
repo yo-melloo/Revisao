@@ -1,4 +1,5 @@
 package com.mello.revisao.config;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.lang.NonNull;
@@ -13,7 +14,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(@NonNull CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("http://localhost:3000", "http://127.0.0.1:5500") // ajuste conforme seu frontend
+                        .allowedOrigins("http://localhost:3000", "http://127.0.0.1:5500") // ajuste conforme eu frontend
                         .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE");
             }
         };
