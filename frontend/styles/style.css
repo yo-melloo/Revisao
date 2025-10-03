@@ -231,7 +231,7 @@ button:hover {
   padding: 20px;
   margin: 1%;
   text-align: center;
-  color: #000;
+  color: #ffffff;
   background: rgba(0,226,57,0.1);
   backdrop-filter: blur(10px);
   border-radius: 20px;
@@ -251,7 +251,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
   width: 100%;
   max-width: 250px;
   height: 250px;
@@ -260,7 +259,7 @@ button:hover {
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(31,38,135,0.37);
   border: 1px solid rgba(0,226,57,0.18);
-  color: #000;
+  color: #ffffff;
   padding: 20px;
   transition: all 0.5s ease;
   overflow: hidden;
@@ -343,11 +342,11 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  font-size: 14px;
+  font-size: 12px;
   margin-bottom: 15px;
 }
 .password-reset a {
-  color: #007bff;
+  color: #77b9ff;
   text-decoration: none;
 }
 .password-reset a:hover {
@@ -410,7 +409,6 @@ img.product-image {
 form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
 }
 
 .form-input,

@@ -65,14 +65,20 @@
 
     <section class="content-section">
       <div class="login-panel">
-        <img src="images/nouser.png" alt="Usuário" class="login-avatar" />
+        <img src="images/avatar.png" alt="Usuário" class="login-avatar" />
 
         <h2>Criar conta</h2>
 
         <form>
           <input type="text" placeholder="Nome de Usuário" required />
           <input type="email" placeholder="E-mail" required />
-          <input type="password" placeholder="Senha" required />
+          <input type="password" id="senha" placeholder="Senha" required />
+          
+          <div class="password-reset">
+            <span>Já tem uma conta?
+              <a href="./login.html">Fazer login</a>
+            </span> 
+          </div>
 
           <button type="submit">Finalizar</button>
         </form>
