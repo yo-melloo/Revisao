@@ -1,11 +1,21 @@
 package com.mello.revisao.services;
 
+import com.mello.revisao.domain.usermodel.UserModel;
+import com.mello.revisao.repository.UserRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
-    public String exibir() {
-        System.out.println("O usuário está conectando no controlador de Usuários!");
-        return "Usuário";
+
+    private UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public List<UserModel> mostrarUsuarios() {
+        return userRepository.findAll();
     }
 }
