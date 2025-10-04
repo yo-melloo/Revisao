@@ -265,7 +265,8 @@ button:hover {
   overflow: hidden;
 }
 
-.login-panel:hover {
+.login-panel:hover,
+.login-panel:focus-within {
   max-width: 400px;
   height: 550px;
   padding: 40px 30px;
@@ -293,10 +294,13 @@ button:hover {
   margin: 0 auto;
   transition: all 0.5s ease;
 }
-.login-panel:hover .login-avatar {
+
+.login-panel:hover .login-avatar,
+.login-panel:focus-within .login-avatar {
   width: 130px;
   height: 130px;
 }
+
 .login-panel h2 {
   font-size: 1.5rem;
   margin: 15px 0;
@@ -313,7 +317,9 @@ button:hover {
 }
 
 .login-panel:hover form,
-.login-panel:hover .password-reset {
+.login-panel:hover .password-reset,
+.login-panel:focus-within form,
+.login-panel:focus-within .password-reset {
   opacity: 1;
   transform: translateY(0);
 }
@@ -345,13 +351,16 @@ button:hover {
   font-size: 12px;
   margin-bottom: 15px;
 }
+
 .password-reset a {
   color: #77b9ff;
   text-decoration: none;
 }
+
 .password-reset a:hover {
   text-decoration: underline;
 }
+
 .checkbox {
   display: flex;
   align-items: center;
