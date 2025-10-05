@@ -7,7 +7,6 @@ target/
 
 
 # Ignorar dumps e arquivos temporários
-*.sql
 *.db
 *.log
 
