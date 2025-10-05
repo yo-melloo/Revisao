@@ -11,11 +11,11 @@ public class UserService {
 
     private UserRepository userRepository;
 
-    public UserService(UserRepository userRepository){
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    public List<UserModel> mostrarUsuarios(){
+    public List<UserModel> mostrarUsuarios() {
         return userRepository.findAll();
     }
 }
