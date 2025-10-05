@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/style.css" />
-    <title>MTech Login</title>
+    <title>Mtech Criar uma conta</title>
   </head>
   <body>
     <header>
@@ -67,43 +67,26 @@
       <div class="login-panel">
         <img src="images/avatar.png" alt="Usuário" class="login-avatar" />
 
-        <h2>Login</h2>
+        <h2>Criar conta</h2>
 
-        <form id="form-login">
-          <input type="email" id="email" placeholder="E-mail" required />
+        <form>
+          <input type="text" placeholder="Nome de Usuário" required />
+          <input type="email" placeholder="E-mail" required />
           <input type="password" id="senha" placeholder="Senha" required />
-
-          <span>
-            <div class="password-reset">
-              <label class="checkbox">
-                <input type="checkbox" />
-                <span>Manter conectado</span>
-              </label>
-              <a href="#">Esqueci a senha</a>
-            <a href="./signup.html">Criar uma conta</a>
+          
+          <div class="password-reset">
+            <span>Já tem uma conta?
+              <a href="./login.html">Fazer login</a>
+            </span> 
           </div>
-        </span>
 
-          <button type="submit" id="btn-login">Entrar</button>
+          <button type="submit">Finalizar</button>
         </form>
       </div>
-
     </section>
-    
+
     <footer>
       <p class="footer-text">Desenvolvido por @yo-melloo (github)</p>
     </footer>
-    <script src="./scripts/login.js"></script>
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          document.getElementById('form-login').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const senha = document.getElementById('senha').value;
-            login(email, senha);
-  });
-});
-
-      </script>
   </body>
 </html>
