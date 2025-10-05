@@ -1,226 +1,310 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <title>Mtech Informática</title>
-  </head>
-  <body>
-    <header>
-      <nav class="top-nav">
-        <div class="top-nav-title">
-          <h1 class="header-title">Mtech Informática</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Link para o novo CSS com glassmorphism aprimorado -->
+  <link rel="stylesheet" href="./styles/style.css" />
+  <script src="./scripts/layout-adjust.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <title>Mtech Informática | Sua loja de tecnologia</title>
+</head>
+<body>
+
+  <div id="site-header" style="width: 100%"></div>
+
+  <!-- SEÇÃO HERO/PRINCIPAL -->
+  <section class="content-section" id="hero">
+    <div class="flex-content">
+      <div class="content-text">
+        <h2 class="section-title">Departamento de Informática</h2>
+        <p class="section-subtitle">é com a gente mesmo!</p>
+        
+        <div class="text-block">
+          <p>Oferecemos produtos de qualidade e última geração com entrega para todo país.</p>
+          <p>Sua parceira de confiança em tecnologia há mais de 10 anos.</p>
         </div>
-
-        <!-- Hamburger button (opcional) -->
-        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-        <label for="menu-toggle" class="menu-icon">&#9776;</label>
-
-        <ul class="top-nav-list">
-          <li class="has-submenu">
-            <a href="index.html">Página inicial</a>
-            <ul class="submenu" id="submenu-account">
-              <li><a href="index.html#info">Quem somos</a></li>
-              <li><a href="index.html#contact-section">Contato</a></li>
-            </ul>
-          </li>
-
-          <li class="has-submenu">
-            <a href="index.html#produtos">Produtos</a>
-            <ul class="submenu" id="submenu-products">
-              <li><a href="#perifericos">Periféricos</a></li>
-              <li><a href="#monitores">Monitores</a></li>
-              <li><a href="#computadores">Computadores</a></li>
-              <li><a href="#hardware">Hardware</a></li>
-            </ul>
-          </li>
-
-          <li class="has-submenu">
-            <a href="#carrinho">Carrinho</a>
-            <ul class="submenu" id="submenu-cart">
-              <li><a href="#checkout">Fazer checkout</a></li>
-            </ul>
-          </li>
-
-          <li class="has-submenu">
-            <a href="http://localhost:8080/api/customers/1">Conta</a>
-            <ul class="submenu" id="submenu-account">
-              <li><a href="/frontend/login.html">Login</a></li>
-              <li><a href="#sair">Sair</a></li>
-            </ul>
-          </li>
-        </ul>
-
-        <div class="search-box">
-          <input
-            type="text"
-            name="header-search-input"
-            class="search-input"
-            placeholder="Pesquisar..."
-          />
-        </div>
-      </nav>
-    </header>
-
-    <section class="content-section" id="info">
-      <div class="flex-content">
-        <div class="content-text">
-          <div class="text-block" id="title-subtitle">
-            <h2 class="section-title">Prazer em te conhecer!</h2>
-            <h3 class="section-subtitle">
-              Do seu mais novo parceiro no mundo Tech
-            </h3>
-          </div>
-
-          <div class="text-block" id="presentation">
-            <p>
-              Departamento de Informática é com a gente mesmo! oferecemos
-              produtos de qualidade e de última geração com entrega para todo
-              país.
-            </p>
-          </div>
-
-          <div class="button-wrap">
-            <a href="#contato">
-              <button type="button" id="contact-button">CONTATO</button>
-            </a>
-          </div>
-        </div>
-
-        <div class="content-image-wrap">
-          <img
-            src="images/yellowbg-notebook-woman-710x474.jpg"
-            class="content-image"
-            width="100%"
-            height="auto"
-            alt="Notebook com fundo amarelo"
-          />
+        
+        <div class="button-wrap">
+          <a href="#produtos">
+            <b><i class="fas fa-shopping-cart"></i> Ver produtos</b>
+          </a>
         </div>
       </div>
-    </section>
+      
+      <!-- IMAGEM PRINCIPAL -->
+      <div class="content-image-wrap">
+        <img src="https://via.placeholder.com/600x400/00e239/ffffff?text=Mtech+Tech+Store" 
+             alt="Mtech Informática - Sua loja de tecnologia" 
+             class="content-image" />
+      </div>
+    </div>
+  </section>
 
-    <section id="produtos" class="content-section">
-      <div class="glass-panel">
-        <a href="" class="product-card">
-          <img
-            src="images/PC-Gamer.png"
-            class="product-image"
-            alt="Gabinete Gamer"
-          />
-          <div class="product-text-box">
-            <p>PC Gamer Pichau Anfitrite</p>
-          </div>
-        </a>
-
-        <a href="" class="product-card">
-          <img
-            src="images/Notebook-Gamer.avif"
-            class="product-image"
-            alt="Notebook G15"
-          />
-          <div class="product-text-box">
-            <p>Notebook Gamers</p>
-          </div>
-        </a>
-
-        <a href="" class="product-card">
-          <img
-            src="images/PC-Gamer.png"
-            class="product-image"
-            alt="Gabinete Gamer"
-          />
-          <div class="product-text-box">
-            <p>Computadores</p>
-          </div>
-        </a>
-
-        <a href="" class="product-card">
-          <img
-            src="images/Notebook-Gamer.avif"
-            class="product-image"
-            alt="Notebook Dell G15"
-          />
-          <div class="product-text-box">
-            <p>Notebooks</p>
-          </div>
+  <!-- SEÇÃO DE PRODUTOS EM DESTAQUE -->
+  <section class="content-section" id="produtos">
+    <div class="flex-content" style="flex-direction: column;">
+      <h2 class="section-title mb-lg">Produtos em Destaque</h2>
+      
+      <!-- GRID DE PRODUTOS COM GLASSMORPHISM -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%;">
+        
+        <!-- PRODUTO 1 -->
+        <div class="product-card glass-card">
+          <img src="https://via.placeholder.com/250x200/00e239/ffffff?text=PC+Gamer" 
+               alt="PC Gamer Pichau Anfitrite" 
+               class="product-image" />
+          <h3 style="color: var(--white); margin: 15px 0 5px 0;">PC Gamer Pichau Anfitrite</h3>
+          <p style="font-size: 16px; margin: 0;">Performance extrema para jogos</p>
+        </div>
+        
+        <!-- PRODUTO 2 -->
+        <div class="product-card glass-card">
+          <img src="https://via.placeholder.com/250x200/00e239/ffffff?text=Notebook" 
+               alt="Notebook Gamers" 
+               class="product-image" />
+          <h3 style="color: var(--white); margin: 15px 0 5px 0;">Notebook Gamers</h3>
+          <p style="font-size: 16px; margin: 0;">Portabilidade e poder juntos</p>
+        </div>
+        
+        <!-- PRODUTO 3 -->
+        <div class="product-card glass-card">
+          <img src="https://via.placeholder.com/250x200/00e239/ffffff?text=Desktop" 
+               alt="Computadores" 
+               class="product-image" />
+          <h3 style="color: var(--white); margin: 15px 0 5px 0;">Computadores</h3>
+          <p style="font-size: 16px; margin: 0;">Para trabalho e estudos</p>
+        </div>
+        
+        <!-- PRODUTO 4 -->
+        <div class="product-card glass-card">
+          <img src="https://via.placeholder.com/250x200/00e239/ffffff?text=Notebooks" 
+               alt="Notebooks" 
+               class="product-image" />
+          <h3 style="color: var(--white); margin: 15px 0 5px 0;">Notebooks</h3>
+          <p style="font-size: 16px; margin: 0;">Linha completa disponível</p>
+        </div>
+        
+      </div>
+      
+      <!-- BOTÃO VER MAIS PRODUTOS -->
+      <div class="button-wrap mt-lg">
+        <a href="#catalogo">
+          <b><i class="fas fa-th"></i> Ver catálogo completo</b>
         </a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="content-section" id="contact-section">
-      <div class="flex-content" id="contact">
-        <div class="content-text">
-          <div class="text-block" id="title-subtitle">
-            <h2 class="section-title">O que achou?</h2>
-            <h3 class="section-subtitle">Fala que eu te escuto</h3>
-          </div>
-
-          <div class="text-block">
-            <p>
-              Ainda estamos em desenvolvimento, adoraríamos que nos avisasse de
-              qualquer coisa!
-            </p>
-          </div>
-
-          <div class="form-container" id="contact-form">
-            <h2>Entre em Contato</h2>
-            <form>
-              <input
-                type="text"
-                placeholder="Seu Nome"
-                class="form-input"
-                id="contact-name"
-                required
-              />
-              <input
-                type="email"
-                placeholder="Seu E-mail"
-                class="form-input"
-                id="email"
-                required
-              />
-              <input
-                type="text"
-                placeholder="Assunto"
-                class="form-input"
-                id="subject"
-              />
-              <textarea
-                placeholder="Sua Mensagem"
-                class="form-textarea"
-                id="message"
-                required
-              ></textarea>
-              <button type="submit">Enviar</button>
-            </form>
-          </div>
+  <!-- SEÇÃO SOBRE A EMPRESA -->
+  <section class="content-section" id="info">
+    <div class="flex-content">
+      <div class="content-image-wrap">
+        <img src="https://via.placeholder.com/500x350/00e239/ffffff?text=Nossa+Equipe" 
+             alt="Equipe Mtech Informática" 
+             class="content-image" />
+      </div>
+      
+      <div class="content-text">
+        <h2 class="section-title">Quem Somos</h2>
+        <p class="section-subtitle">Sua parceira em tecnologia</p>
+        
+        <div class="text-block">
+          <p>A Mtech Informática é uma empresa especializada em tecnologia, fundada com o propósito de democratizar o acesso a equipamentos de qualidade.</p>
+          <p>Nossa equipe é formada por profissionais apaixonados por tecnologia, sempre prontos para encontrar a solução ideal para cada cliente.</p>
         </div>
-
-        <div class="content-image-wrap">
-          <img
-            src="images/programmer-612x612.jpg"
-            class="content-image"
-            width="100%"
-            height="auto"
-            alt="Pessoa sentada em frente a dois computadores"
-          />
+        
+        <!-- CARACTERÍSTICAS DA EMPRESA -->
+        <div class="benefits-list" style="display: flex; flex-direction: column; gap: 15px;">
+          <div class="benefit-item glass-panel">
+            <i class="fas fa-award"></i>
+            <span>Mais de 10 anos no mercado</span>
+          </div>
+          
+          <div class="benefit-item glass-panel">
+            <i class="fas fa-users"></i>
+            <span>Milhares de clientes satisfeitos</span>
+          </div>
+          
+          <div class="benefit-item glass-panel">
+            <i class="fas fa-handshake"></i>
+            <span>Parcerias com grandes marcas</span>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <footer>
-      <p class="footer-text">Desenvolvido por @yo-melloo (github)</p>
-    </footer>
-  </body>
+  <!-- SEÇÃO DE CONTATO -->
+  <section class="content-section" id="contact-section">
+    <div class="flex-content" id="contact">
+      <div class="content-text">
+        <h2 class="section-title">Entre em Contato</h2>
+        <p class="section-subtitle">Estamos aqui para ajudar</p>
+        
+        <div class="text-block">
+          <p>Ainda estamos em desenvolvimento, adoraríamos que nos avisasse de qualquer coisa!</p>
+          <p>Nossa equipe está sempre disponível para esclarecer dúvidas, dar suporte técnico e ajudar você a escolher os melhores produtos.</p>
+        </div>
+        
+        <!-- INFORMAÇÕES DE CONTATO -->
+        <div class="contact-info" style="display: flex; flex-direction: column; gap: 15px; margin-top: 25px;">
+          <div class="contact-item glass-panel">
+            <i class="fas fa-phone"></i>
+            <span>(11) 99999-9999</span>
+          </div>
+          
+          <div class="contact-item glass-panel">
+            <i class="fas fa-envelope"></i>
+            <span>contato@mtech.com.br</span>
+          </div>
+          
+          <div class="contact-item glass-panel">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>São Paulo, SP - Brasil</span>
+          </div>
+          
+          <div class="contact-item glass-panel">
+            <i class="fas fa-clock"></i>
+            <span>Seg à Sex: 8h às 18h</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- FORMULÁRIO DE CONTATO -->
+      <div class="form-container">
+        <div class="glass-panel" style="padding: 30px; flex-direction: column;">
+          <h3 style="color: var(--accent-primary); margin-top: 0;">Envie uma mensagem</h3>
+          
+          <form action="#" method="post" style="display: flex; flex-direction: column; gap: 15px;">
+            <input type="text" 
+                   name="name" 
+                   placeholder="Seu nome" 
+                   required 
+                   class="form-input" />
+            
+            <input type="email" 
+                   name="email" 
+                   placeholder="Seu e-mail" 
+                   required 
+                   class="form-input" />
+            
+            <input type="text" 
+                   name="subject" 
+                   placeholder="Assunto" 
+                   required 
+                   class="form-input" />
+            
+            <textarea name="message" 
+                      placeholder="Sua mensagem..." 
+                      required 
+                      class="form-textarea"
+                      rows="5"></textarea>
+            
+            <button type="submit" style="margin-top: 15px;">
+              <i class="fas fa-paper-plane"></i> Enviar mensagem
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO DE CHAMADA PARA AÇÃO -->
+  <section class="content-section" style="margin-top: 50px;">
+    <div class="flex-content" style="flex-direction: column; text-align: center;">
+      <h2 class="section-title mb-lg">Pronto para começar?</h2>
+      
+      <div class="text-block mb-lg">
+        <p>Junte-se a milhares de clientes satisfeitos e descubra por que a Mtech Informática é referência em tecnologia.</p>
+      </div>
+      
+      <!-- BOTÕES DE AÇÃO -->
+      <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+        <div class="button-wrap">
+          <a href="signup.html">
+            <b><i class="fas fa-user-plus"></i> Criar conta grátis</b>
+          </a>
+        </div>
+        
+        <div class="button-wrap">
+          <a href="#produtos">
+            <b><i class="fas fa-shopping-cart"></i> Ver produtos</b>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER COM GLASSMORPHISM -->
+<div id="site-footer" style="width: 100%"></div>
+
+  <!-- SCRIPT PARA FUNCIONALIDADES INTERATIVAS -->
+  <script>
+    // Navegação suave para âncoras
+    document.addEventListener('DOMContentLoaded', function() {
+      // Navegação por teclado no menu
+      const menuItems = document.querySelectorAll('.has-submenu > a');
+      
+      menuItems.forEach(item => {
+        item.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const submenu = this.nextElementSibling;
+            submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+          }
+        });
+      });
+      
+      // Scroll suave para âncoras
+      const links = document.querySelectorAll('a[href^="#"]');
+      links.forEach(link => {
+        link.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            e.preventDefault();
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    });
+    
+    // Formulário de contato
+    const contactForm = document.querySelector('#contact-section form');
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = this.querySelector('input[name="name"]').value;
+      const email = this.querySelector('input[name="email"]').value;
+      const subject = this.querySelector('input[name="subject"]').value;
+      const message = this.querySelector('textarea[name="message"]').value;
+      
+      if (!name || !email || !subject || !message) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+      
+      // Simula envio do formulário
+      alert(`Obrigado, ${name}! Sua mensagem foi enviada com sucesso. Retornaremos em breve! 🚀`);
+      this.reset();
+    });
+    
+    // Efeito parallax sutil no hero
+    window.addEventListener('scroll', function() {
+      const scrolled = window.pageYOffset;
+      const parallax = document.querySelector('#hero .content-image');
+      if (parallax) {
+        parallax.style.transform = `translateY(${scrolled * 0.1}px)`;
+      }
+    });
+  </script>
+</body>
 </html>
