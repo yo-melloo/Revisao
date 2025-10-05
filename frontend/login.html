@@ -1,109 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/style.css" />
-    <title>MTech Login</title>
-  </head>
-  <body>
-    <header>
-      <nav class="top-nav">
-        <div class="top-nav-title">
-          <h1 class="header-title">Mtech Informática</h1>
-        </div>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Link para o novo CSS com glassmorphism aprimorado -->
+  <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <title>Login | Mtech Informática</title>
+</head>
+<body>
 
-        <!-- Hamburger button (opcional) -->
-        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+<div id="site-header" style="width: 100%"></div>
 
-        <ul class="top-nav-list">
-          <li class="has-submenu">
-            <a href="index.html">Página inicial</a>
-            <ul class="submenu" id="submenu-account">
-              <li><a href="#info">Quem somos</a></li>
-              <li><a href="#contato">Contato</a></li>
-            </ul>
-          </li>
-
-          <li class="has-submenu">
-            <a href="#produtos">Produtos</a>
-            <ul class="submenu" id="submenu-products">
-              <li><a href="#perifericos">Periféricos</a></li>
-              <li><a href="#monitores">Monitores</a></li>
-              <li><a href="#computadores">Computadores</a></li>
-              <li><a href="#hardware">Hardware</a></li>
-            </ul>
-          </li>
-
-          <li class="has-submenu">
-            <a href="#carrinho">Carrinho</a>
-            <ul class="submenu" id="submenu-cart">
-              <li><a href="#checkout">Fazer checkout</a></li>
-            </ul>
-          </li>
-
-          <li class="has-submenu">
-            <a href="#conta">Conta</a>
-            <ul class="submenu" id="submenu-account">
-              <li><a href="/frontend/login.html">Login</a></li>
-              <li><a href="#sair">Sair</a></li>
-            </ul>
-          </li>
-        </ul>
-
-        <div class="search-box">
-          <input
-            type="text"
-            name="header-search-input"
-            class="search-input"
-            placeholder="Pesquisar..."
-          />
-        </div>
-      </nav>
-    </header>
-
-    <section class="content-section">
-      <div class="login-panel">
-        <img src="images/avatar.png" alt="Usuário" class="login-avatar" />
-
-        <h2>Login</h2>
-
-        <form id="form-login">
-          <input type="email" id="email" placeholder="E-mail" required />
-          <input type="password" id="senha" placeholder="Senha" required />
-
-          <span>
-            <div class="password-reset">
-              <label class="checkbox">
-                <input type="checkbox" />
-                <span>Manter conectado</span>
-              </label>
-              <a href="#">Esqueci a senha</a>
-            <a href="./signup.html">Criar uma conta</a>
+  <!-- SEÇÃO PRINCIPAL COM LOGIN PANEL ANIMADO -->
+<section class="content-section">
+    <div class="flex-content">
+      <!-- PAINEL DE LOGIN COM AS 4 ANIMAÇÕES ESPECIAIS -->
+      <!-- 
+        Este componente possui 4 animações principais:
+        1. Expansão do painel (hover/focus)
+        2. Efeito de brilho pulsante (glowingEffect)
+        3. Zoom do avatar (cresce de 100px para 140px)
+        4. Revelação do formulário (fade-in + slide-up)
+      -->
+      <div class="login-panel glass-card">
+        <!-- AVATAR QUE CRESCE NO HOVER -->
+        <img src="https://via.placeholder.com/100x100/00e239/ffffff?text=Login" 
+             alt="Avatar de Login" 
+             class="login-avatar" />
+        
+        <!-- TÍTULO DO PAINEL -->
+        <h2>Bem-vindo de volta!</h2>
+        
+        <!-- FORMULÁRIO QUE APARECE COM ANIMAÇÃO -->
+        <form action="#" method="post">
+          <input type="email" 
+                 name="email" 
+                 placeholder="Seu e-mail" 
+                 required
+                 autocomplete="email" />
+          
+          <input type="password" 
+                 name="password" 
+                 placeholder="Sua senha" 
+                 required
+                 autocomplete="current-password" />
+          
+          <!-- ÁREA DE RESET DE SENHA COM ANIMAÇÃO -->
+          <div class="password-reset">
+            <label class="checkbox">
+              <input type="checkbox" name="remember" />
+              <span>Lembrar-me</span>
+            </label>
+            <a href="#reset">Esqueci minha senha</a>
           </div>
-        </span>
-
-          <button type="submit" id="btn-login">Entrar</button>
+          
+          <button type="submit">
+            <i class="fas fa-sign-in-alt"></i> Entrar
+          </button>
         </form>
+        
+        <!-- LINK PARA CADASTRO -->
+        <div class="signup-link mt-md">
+          <p>Não tem conta? <a href="signup.html">Cadastre-se aqui</a></p>
+        </div>
       </div>
+      
+      <!-- SEÇÃO DE TEXTO INFORMATIVO -->
+      <div class="content-text">
+        <h2 class="section-title">Entre na sua conta</h2>
+        <p class="section-subtitle">Acesse sua área pessoal</p>
+        
+        <div class="text-block">
+          <p>Faça login para acessar suas informações, histórico de pedidos e ofertas exclusivas da Mtech Informática.</p>
+        </div>
+        
+        <!-- BENEFÍCIOS DO LOGIN -->
+        <div class="benefits-list">
+          <div class="benefit-item glass-panel">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Histórico de pedidos</span>
+          </div>
+          
+          <div class="benefit-item glass-panel">
+            <i class="fas fa-percentage"></i>
+            <span>Ofertas exclusivas</span>
+          </div>
+          
+          <div class="benefit-item glass-panel">
+            <i class="fas fa-truck"></i>
+            <span>Rastreamento de entregas</span>
+          </div>
+        </div>
+        
+        <!-- BOTÃO ALTERNATIVO -->
+        <div class="button-wrap">
+          <a href="signup.html">
+            <b>Ainda não tem conta? Cadastre-se</b>
+          </a>
+        </div>
+      </div>
+    </div>
+</section>
 
-    </section>
-    
-    <footer>
-      <p class="footer-text">Desenvolvido por @yo-melloo (github)</p>
-    </footer>
-    <script src="./scripts/login.js"></script>
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          document.getElementById('form-login').addEventListener('submit', function(e) {
+<div id="site-footer" style="width: 100%"></div>
+
+  <script>
+    // Insere header
+    fetch('header.html').then(r=>r.text()).then(html=>{
+      document.getElementById('site-header').innerHTML = html;
+    });
+    // Insere footer
+    fetch('footer.html').then(r=>r.text()).then(html=>{
+      document.getElementById('site-footer').innerHTML = html;
+    });
+  </script>
+
+  <!-- SCRIPT PARA MELHORIAS DE ACESSIBILIDADE -->
+  <script>
+    // Adiciona suporte a navegação por teclado no menu
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuItems = document.querySelectorAll('.has-submenu > a');
+      
+      menuItems.forEach(item => {
+        item.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            const email = document.getElementById('email').value;
-            const senha = document.getElementById('senha').value;
-            login(email, senha);
-  });
-});
-
-      </script>
-  </body>
+            const submenu = this.nextElementSibling;
+            submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+          }
+        });
+      });
+      
+      // Auto-focus no primeiro input quando o painel expandir
+      const loginPanel = document.querySelector('.login-panel');
+      const firstInput = loginPanel.querySelector('input[type="email"]');
+      
+      loginPanel.addEventListener('mouseenter', () => {
+        setTimeout(() => firstInput.focus(), 300);
+      });
+    });
+    
+    // Validação básica do formulário
+    const form = document.querySelector('.login-panel form');
+    form.addEventListener('submit', function(e) {
+      const email = this.querySelector('input[type="email"]').value;
+      const password = this.querySelector('input[type="password"]').value;
+      
+      if (!email || !password) {
+        e.preventDefault();
+        alert('Por favor, preencha todos os campos.');
+      }
+    });
+  </script>
+</body>
 </html>

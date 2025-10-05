@@ -7,7 +7,8 @@ async function login(login, password) {
     });
 
     if (resp.status === 403) {
-      alert("Usuário ou senha inválidos!");
+      console.log("Usuário ou senha inválidos!");
+      setLoginState('error');
       return;
     }
 
@@ -15,38 +16,21 @@ async function login(login, password) {
     
     if (resp.ok && data.token) {
       // Login sucesso
-      alert("Login realizado com sucesso!");
+      console.log("Login realizado com sucesso!");
       // Armazena o token no localStorage
       localStorage.setItem('token', data.token);
+      setLoginState('success');
       // Redireciona para a página principal após 1 segundo
       setTimeout(() => {
         window.location.href = '/frontend/index.html';
       }, 1000);
     } else {
       // Erro no login
-      alert(data.message || "Usuário ou senha inválidos!");
+      console.log(data.message || "Usuário ou senha inválidos!");
+      setLoginState('error');
     }
   } catch (err) {
     console.error(err);
-    alert("Erro de conexão com o servidor.");
+    console.log("Erro de conexão com o servidor.");
   }
-}
-
-function showAlert(message, type) {
-  const alertClass = type === 'success' ? 'alert-success' : 'alert-error';
-  const alertDiv = document.createElement('div');
-  alertDiv.className = `alert ${alertClass}`;
-  alertDiv.textContent = message;
-  
-  // Remove alertas anteriores
-  const existingAlerts = document.querySelectorAll('.alert');
-  existingAlerts.forEach(alert => alert.remove());
-  
-  // Adiciona o novo alerta no topo da página
-  document.body.insertBefore(alertDiv, document.body.firstChild);
-  
-  // Remove o alerta após 3 segundos
-  setTimeout(() => {
-    alertDiv.remove();
-  }, 3000);
 }
