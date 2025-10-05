@@ -120,7 +120,7 @@
   --radius-sm: 6px;
   --radius-base: 8px;
   --radius-md: 10px;
-  --radius-lg: 12px;
+  --radius-lg: 16px;
   --radius-full: 9999px;
 
   /* Shadows */
@@ -310,8 +310,8 @@ html {
 }
 
 body {
-  margin: 0;
-  padding: 0;
+  /* REMOVIDO position se não for necessário */
+  position: static;
 }
 
 *,
@@ -361,6 +361,7 @@ a {
   color: var(--color-primary);
   text-decoration: none;
   transition: color var(--duration-fast) var(--ease-standard);
+  cursor: pointer;
 }
 
 a:hover {
@@ -738,7 +739,6 @@ select.form-control {
     format('woff2');
 }
 
-/* END PERPLEXITY DESIGN SYSTEM */
 :root {
   /* ==================== DESIGN SYSTEM INTEGRATION ==================== */
   /* Adapting glassmorphism system to use Perplexity design tokens */
@@ -791,10 +791,10 @@ select.form-control {
   --radius-circle: var(--radius-full);
   
   /* ==================== ANIMAÇÕES ==================== */
-  --transition-fast: var(--duration-fast) var(--ease-standard);
+  --transition-fast: 1000ms var(--ease-standard);
   --transition-normal: var(--duration-normal) var(--ease-standard);
-  --transition-slow: 500ms var(--ease-standard);
-  --transition-bounce: 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-slow: 800ms var(--ease-standard);
+  --transition-bounce: 650ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
   
   /* ==================== CORES NEUTRAS ==================== */
   --white: var(--color-white);
@@ -856,7 +856,6 @@ ul {
 .glass-card::before,
 .glassy::before {
   content: '';
-  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -867,7 +866,6 @@ ul {
     rgba(var(--color-text-rgb, 19, 52, 59), 0.3),
     transparent
   );
-  z-index: 1;
 }
 
 .glass-card::after,
@@ -884,16 +882,15 @@ ul {
     transparent,
     rgba(var(--color-text-rgb, 19, 52, 59), 0.1)
   );
-  z-index: 1;
 }
 
 /* ==================== ESTADOS DE HOVER ==================== */
-.glass-card:hover,
-.glassy:hover {
+.glass-card:hover {
   background: var(--glass-bg-hover);
   border-color: var(--glass-border-hover);
   box-shadow: var(--shadow-glass-hover);
   transform: translateY(-2px);
+  overflow: visible;
 }
 
 /* ==================== LAYOUT PRINCIPAL ==================== */
@@ -902,11 +899,11 @@ header {
   padding: 0;
   position: sticky;
   top: 0;
-  z-index: 1000;
 }
 
 section.content-section {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -921,11 +918,13 @@ section.content-section {
 
 .flex-content {
   display: flex;
-  flex-direction: row;
-  gap: 5%;
+  align-self: center;
   align-items: center;
   justify-content: center;
+
+  gap: 5%;
   text-align: left;
+  width: 100%;
   margin: 1% var(--space-sm);
 }
 
@@ -933,16 +932,22 @@ section.content-section {
   flex-direction: row-reverse;
 }
 
+
+
 /* ==================== NAVEGAÇÃO ==================== */
 .top-nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: var(--space-sm);
-  height: 180px;
-  padding: 0 var(--space-lg);
-  font-size: var(--font-size-large);
-  background-color: var(--accent-primary);
+  gap: var(--space-12);
+  height: 10%;
+  padding: 15px var(--space-24);
+  font-size: var(--font-size-lg);
+  background-color: var(--color-primary);
+  z-index: 100;
 }
 
 .top-nav-title {
@@ -951,31 +956,36 @@ section.content-section {
 }
 
 .header-title {
-  font-size: 1.5rem;
+  font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-btn-primary-text);
   margin: 0;
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-12);
 }
 
-.search-box {
-  width: 40%;
-}
+  .search-box { 
+    width: 30%; 
+    max-width: 720px; 
+    display: flex; 
+    justify-content: center; 
+  }
+  
 
 .top-nav input {
   border: none;
   border-radius: var(--radius-md);
   font-size: var(--font-size-xl);
-  padding: var(--space-md) var(--space-lg);
+  padding: var(--space-16) var(--space-24);
   background: var(--color-secondary);
   color: var(--color-text);
-  transition: all var(--transition-normal);
+  transition: all var(--duration-normal) var(--ease-standard);
+  width: 100%;
 }
 
 .top-nav input::placeholder {
-  color: var(--color-text-secondary);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .top-nav input:focus {
@@ -987,9 +997,8 @@ section.content-section {
 .top-nav-list {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  font-size: var(--font-size-large);
-  transition: transform var(--transition-normal), filter var(--transition-normal);
+  gap: var(--space-12);
+  font-size: var(--font-size-lg);
 }
 
 .top-nav-list > li {
@@ -999,45 +1008,70 @@ section.content-section {
 .top-nav-list a {
   border-radius: var(--radius-md);
   display: block;
-  padding: var(--space-md);
+  padding: var(--space-16);
   color: var(--color-btn-primary-text);
   text-decoration: none;
   text-align: center;
-  transition: all var(--transition-fast);
-  will-change: background-color, transform, filter;
+  transition: background-color var(--duration-fast), transform var(--duration-fast);
 }
 
 .top-nav-list a:hover {
-  background-color: var(--accent-tertiary);
-  transform: scale(1.08);
-  filter: drop-shadow(2px 8px 10px rgba(0,0,0,0.2));
+  background-color: var(--color-primary-hover);
+  transform: scale(1.05);
 }
 
-/* ==================== SUBMENU ==================== */
+/* ==================== SUBMENU SIMPLIFICADO ==================== */
+
 .submenu {
   border-radius: var(--radius-md);
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 160px;
+  min-width: 180px;
+  padding: var(--space-8);
+  margin: 0;
+  list-style: none;
   background: var(--color-surface);
-  backdrop-filter: blur(var(--blur-amount));
-  -webkit-backdrop-filter: blur(var(--blur-amount));
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-md);
-  z-index: 100;
-  animation: fadeInUp var(--transition-normal);
+  animation: fadeInUp 0.15s ease-out;
 }
 
-.has-submenu:hover > .submenu {
+.submenu a {
   display: block;
+  padding: var(--space-12);
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--duration-fast);
+  font-size: var(--font-size-base);
+}
+
+.submenu a:hover {
+  background-color: var(--color-secondary-hover);
+}
+
+.has-submenu:hover > .submenu,
+.has-submenu:focus-within > .submenu {
+  display: block;
+}
+
+.top-nav-list > li > a:focus {
+  outline: 2px solid var(--color-btn-primary-text);
+  outline-offset: 2px;
+}
+
+.submenu a:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  background-color: var(--color-secondary-hover);
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
   to {
     opacity: 1;
@@ -1118,6 +1152,7 @@ b, button {
 
 .button-wrap b:hover,
 button:hover {
+  color: white;
   transform: scale(1.05);
   background: var(--accent-secondary);
   box-shadow: 0 6px 20px rgba(var(--color-primary-rgb, 33, 128, 141), 0.4);
@@ -1136,7 +1171,7 @@ button:hover {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--blur-amount));
   -webkit-backdrop-filter: blur(var(--blur-amount));
-  border-radius: var(--radius-lg);
+  border-radius: 16px;
   box-shadow: var(--shadow-glass);
   border: 1px solid var(--glass-border);
   position: relative;
@@ -1155,6 +1190,10 @@ button:hover {
   overflow: visible;
 }
 
+.glass-panel h3{
+  margin: 10px 10px 10px 10px;
+}
+
 /* ==================== LOGIN PANEL ANIMADO ==================== */
 .login-panel {
   display: flex;
@@ -1162,20 +1201,16 @@ button:hover {
   align-items: center;
   width: 100%;
   max-width: 280px;
-  min-height: 300px;
-  
+  min-height: 200px;
   background: var(--color-surface);
   backdrop-filter: blur(var(--blur-amount));
   -webkit-backdrop-filter: blur(var(--blur-amount));
-  border-radius: var(--radius-xl);
+  border-radius: 16px;
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-md);
-  
   color: var(--color-text);
   padding: var(--space-lg);
-  
   transition: all var(--transition-slow);
-  
   overflow: hidden;
   position: relative;
 }
@@ -1186,9 +1221,7 @@ button:hover {
   max-width: 420px;
   min-height: 600px;
   padding: var(--space-2xl);
-  
   animation: glowingEffect 2s ease-in-out infinite;
-  
   box-shadow: var(--shadow-lg);
 }
 
@@ -1227,7 +1260,6 @@ button:hover {
 .login-panel:focus-within .login-avatar {
   width: 140px;
   height: 140px;
-  
   box-shadow: 0 4px 20px rgba(var(--color-primary-rgb, 33, 128, 141), 0.4);
 }
 
@@ -1238,14 +1270,13 @@ button:hover {
   margin: var(--space-md) 0;
   text-align: center;
   color: var(--accent-primary);
-  
   transition: all var(--transition-slow);
 }
 
 /* ==================== ANIMAÇÃO 4: REVELAÇÃO DO FORMULÁRIO ==================== */
 .login-panel form,
 .login-panel .password-reset {
-  opacity: 0;
+  display: none;
   transform: translateY(30px);
   transition: all var(--transition-slow);
   width: 100%;
@@ -1255,7 +1286,7 @@ button:hover {
 .login-panel:hover .password-reset,
 .login-panel:focus-within form,
 .login-panel:focus-within .password-reset {
-  opacity: 1;
+  display:block;
   transform: translateY(0);
 }
 
@@ -1290,14 +1321,14 @@ button:hover {
 }
 
 /* ==================== ÁREA DE RESET DE SENHA ==================== */
-.login-panel .password-reset {
+.password-reset {
+  padding: 5px 5px 5px 5px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: row;
   width: 100%;
   font-size: var(--font-size-sm);
   margin-bottom: var(--space-md);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .login-panel .password-reset a {
@@ -1343,8 +1374,8 @@ button:hover {
 /* ==================== CARDS DE PRODUTO ==================== */
 .product-card {
   box-sizing: border-box;
-  width: 380px;
-  height: 280px;
+  width: 300px;
+  height: 300px;
   padding: 1%;
   display: flex;
   flex-direction: column;
@@ -1352,6 +1383,7 @@ button:hover {
   align-items: center;
   text-align: center;
   font-size: var(--font-size-large);
+  overflow: visible;
   
   background: var(--color-surface);
   backdrop-filter: blur(var(--blur-amount));
@@ -1370,11 +1402,45 @@ button:hover {
   transform: scale(1.05);
 }
 
+.product-panel {
+  flex-direction: column; 
+  align-items: center; 
+  align-self: center; 
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.product-flex {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  flex-wrap: wrap; /* Responsivo: quebra em linhas se não couber */
+  justify-content: center;
+  align-items: stretch;
+}
+
+.product-card.glass-card {
+  min-width: 220px;
+  max-width: 260px;
+  height: auto;
+  background: rgba(30,30,30,0.6);
+  border-radius: 22px;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.13);
+  padding: 24px 16px 14px 16px;
+  backdrop-filter: blur(7px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
 .product-image {
-  max-width: 75%;
-  max-height: 80%;
-  transition: transform var(--transition-normal), filter var(--transition-normal);
+  width: 100%;
+  max-width: 180px;
+  border-radius: 11px;
+  margin-bottom: 14px;
   filter: drop-shadow(2px 8px 10px rgba(0,0,0,0.2));
+  transition: transform var(--transition-normal), filter var(--transition-normal);
 }
 
 .product-image:hover {
@@ -1449,13 +1515,7 @@ footer {
     display: none; 
   }
   
-  .search-box { 
-    width: 100%; 
-    max-width: 720px; 
-    display: flex; 
-    justify-content: center; 
-  }
-  
+
   .top-nav .search-input { 
     width: 100%; 
     max-width: 640px; 
@@ -1463,12 +1523,6 @@ footer {
   
   .content-image { 
     display: none; 
-  }
-  
-  .flex-content { 
-    flex-direction: column; 
-    gap: 10%; 
-    text-align: center; 
   }
   
   .flex-content#contact { 
