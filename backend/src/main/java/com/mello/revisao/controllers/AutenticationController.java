@@ -32,7 +32,9 @@ public class AutenticationController {
     UserRepository userRepository;
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data) {
+    public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid AuthenticationDTO data) {
+        System.out.println("=== Processo de Autenticação ===");
+        System.out.println("DADOS RECEBIDOS: " + data);
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
@@ -45,7 +47,7 @@ public class AutenticationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody @Valid RegisterDTO data) {
+    public ResponseEntity<Object> register(@RequestBody @Valid RegisterDTO data) {
         System.out.println("=== Processo de Registro ===");
 
         // valida se email e nome e login informados não são nulos ou vazios
