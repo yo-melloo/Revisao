@@ -1,6 +1,7 @@
 package com.mello.revisao.domain.usermodel;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,23 +18,36 @@ import java.util.List;
 @Getter
 @Setter
 
-@Entity(name="user")
-@Table(name="usuarios")
+@Entity(name = "usuario")
+@Table(name = "usuarios")
 public class UserModel implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String login;
+    @NotNull
+    private String login; // nome de usuário
 
+    @NotNull
     private String password;
 
-    private UserRole role;
+    @Enumerated(EnumType.STRING)
+    private UserRole role; // ADMIN ou USER
 
-    public UserModel (String login, String password, UserRole role){
+    @NotNull
+    private String name;
+
+    @NotNull
+    private String email;
+
+    private String avatar;
+
+    public UserModel(String login, String password, UserRole role, String email, String name) {
         this.login = login;
         this.password = password;
         this.role = role;
+        this.name = name;
+        this.email = email;
     }
 
     @Override
@@ -41,8 +55,7 @@ public class UserModel implements UserDetails {
         if (this.role == UserRole.ADMIN) {
             return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"),
                     new SimpleGrantedAuthority("ROLE_USER"));
-        }
-        else {
+        } else {
             return List.of(new SimpleGrantedAuthority("ROLE_USER"));
         }
     }
