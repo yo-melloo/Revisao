@@ -18,7 +18,7 @@ import java.util.List;
 @Getter
 @Setter
 
-@Entity(name = "user")
+@Entity(name = "usuario")
 @Table(name = "usuarios")
 public class UserModel implements UserDetails {
     @Id
@@ -31,6 +31,7 @@ public class UserModel implements UserDetails {
     @NotNull
     private String password;
 
+    @Enumerated(EnumType.STRING)
     private UserRole role; // ADMIN ou USER
 
     @NotNull
