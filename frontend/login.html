@@ -65,29 +65,45 @@
 
     <section class="content-section">
       <div class="login-panel">
-        <img src="images/nouser.png" alt="Usuário" class="login-avatar" />
+        <img src="images/avatar.png" alt="Usuário" class="login-avatar" />
 
         <h2>Login</h2>
 
-        <form>
-          <input type="email" placeholder="E-mail" required />
-          <input type="password" placeholder="Senha" required />
+        <form id="form-login">
+          <input type="email" id="email" placeholder="E-mail" required />
+          <input type="password" id="senha" placeholder="Senha" required />
 
-          <div class="password-reset">
-            <label class="checkbox">
-              <input type="checkbox" />
-              <span>Manter conectado</span>
-            </label>
-            <a href="#">Esqueci a senha</a>
+          <span>
+            <div class="password-reset">
+              <label class="checkbox">
+                <input type="checkbox" />
+                <span>Manter conectado</span>
+              </label>
+              <a href="#">Esqueci a senha</a>
+            <a href="./signup.html">Criar uma conta</a>
           </div>
+        </span>
 
-          <button type="submit">Entrar</button>
+          <button type="submit" id="btn-login">Entrar</button>
         </form>
       </div>
-    </section>
 
+    </section>
+    
     <footer>
       <p class="footer-text">Desenvolvido por @yo-melloo (github)</p>
     </footer>
+    <script src="./scripts/login.js"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          document.getElementById('form-login').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            login(email, senha);
+  });
+});
+
+      </script>
   </body>
 </html>
