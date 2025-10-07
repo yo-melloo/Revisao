@@ -33,7 +33,4 @@ build/
 
 ### VS Code ###
 .vscode/
-
-/Docker-REVDB.session.sql
-/RevisaoDB.session.sql
-/Docker-REVDB2.session.sql
+Docker-REVDB2.session.sql
