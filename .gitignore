@@ -33,3 +33,4 @@ build/
 
 ### VS Code ###
 .vscode/
+Docker-REVDB2.session.sql
