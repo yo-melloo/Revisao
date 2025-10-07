@@ -56,4 +56,12 @@ DESENVOLVIMENTO FRONT-END DESTE PROJETO por hora, o foco estará no desenvolvime
 - [x] Refatorando Front-End
 - [ ] Reintegrando API de Login e Cadastro **<- Atualmente aqui!**
 
+- *O problema se repetiu, o culpado sou eu. Sem querer eu adicionei a porcaria de um CSS padronizado por que usei a função PRO da IA que to usando pra fazer o front, mas a primeira coisa aprendi = não usar PRO sem ser PRO*
+
+- *Apesar de me achar um artista, eu não encaro um front-end ainda, perdi dias fazendo isso e apartir daqui eu não vou extrapolar muito*
+
+- *Tenho evitado fazer commits desnecessários, mas teve alguns que não entendi o por que mesmo dando merge, o arquivo antigo voltava, e eu me deparei com isso DEZENAS de vezes, talvez eu não devesse trabalhar com tantas merges, então vou centralizar uma merge de fix na main e abrir APENAS DUAS branches*
+  - Feat/frontend
+  - Feat/backend
+
 ---
