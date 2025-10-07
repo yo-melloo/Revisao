@@ -1,36 +1,56 @@
-async function login(login, password) {
-  try {
-    const resp = await fetch("https://glorious-funicular-jj594qxx977jcpjgq-8080.app.github.dev/api/auth/login", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({login, password})
-    });
+//login.js
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('login-form');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    hideStatusMessage();
+    setLoginState(null);
 
-    if (resp.status === 403) {
-      console.log("Usuário ou senha inválidos!");
-      setLoginState('error');
-      return;
-    }
+    const loginValue = form.login.value;
+    const passwordValue = form.password.value;
 
-    const data = await resp.json();
-    
-    if (resp.ok && data.token) {
-      // Login sucesso
-      console.log("Login realizado com sucesso!");
-      // Armazena o token no localStorage
-      localStorage.setItem('token', data.token);
-      setLoginState('success');
-      // Redireciona para a página principal após 1 segundo
-      setTimeout(() => {
-        window.location.href = '/frontend/index.html';
-      }, 1000);
-    } else {
-      // Erro no login
-      console.log(data.message || "Usuário ou senha inválidos!");
-      setLoginState('error');
+    try {
+      const resp = await fetchWithTimeout(
+        "https://glorious-funicular-jj594qxx977jcpjgq-8080.app.github.dev/api/auth/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ login: loginValue, password: passwordValue })
+        },
+        5000 // timeout de 5s
+      );
+
+      let data = {};
+      const contentType = resp.headers.get('content-type') || '';
+      if (contentType.includes('application/json')) {
+        data = await resp.json();
+      }
+
+      if (resp.ok && data.token) {
+        setLoginState("success");
+        showStatusMessage("Login bem-sucedido!", "green");
+        localStorage.setItem("token", data.token);
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 700);
+        return data;
+      } else {
+        setLoginState("error");
+        if (resp.status === 403) {
+          showStatusMessage("Acesso negado. Verifique suas credenciais.", "red");
+          throw new Error("Acesso negado. Verifique suas credenciais.");
+        } else if (resp.status === 401) {
+          showStatusMessage("Deu red aquikkkkk", "red");
+          throw new Error("Acesso negado. Verifique suas credenciais.");
+        } else {
+          showStatusMessage(data.message || "Usuário ou senha inválidos!", "red");
+          throw new Error(data.message || "Usuário ou senha inválidos!");
+        }
+      }
+    } catch (err) {
+      setLoginState("error");
+      showStatusMessage(err.message || "Erro inesperado!", "red");
+      // O throw pode ser omitido se não quiser "propagar" para o console
     }
-  } catch (err) {
-    console.error(err);
-    console.log("Erro de conexão com o servidor.");
-  }
-}
+  });
+});
