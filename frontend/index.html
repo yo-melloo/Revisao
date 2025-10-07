@@ -49,7 +49,7 @@
     <div class="product-panel">
   <h2 class="section-title mb-lg">Produtos em Destaque</h2>
   <!-- GRID DE PRODUTOS COM GLASSMORPHISM -->
-    <div class="product-flex">
+    <div class="product-flex glassy">
       <!-- PRODUTO 1 -->
       <div class="product-card glass-card">
         <a href="#">
@@ -90,38 +90,6 @@
           <p style="font-size: 16px; margin: 0;">Linha completa disponível</p>
         </a>
       </div>
-<<<<<<< Updated upstream
-=======
-      <!-- PRODUTO 2 -->
-      <div class="product-card glass-card">
-        <a href="#">
-          <img src="./images/Notebook-Gamer.avif" 
-          alt="Notebook Gamers" 
-          class="product-image" />
-          <h3 style="color: var(--white); margin: 15px 0 5px 0;">Notebook Gamers</h3>
-          <p style="font-size: 16px; margin: 0;">Portabilidade e poder juntos</p>
-        </a>
-      </div>
-      <!-- PRODUTO 3 -->
-      <div class="product-card glass-card">
-        <a href="#">
-          <img src="./images/PC-Gamer.png" 
-          alt="Computadores" 
-          class="product-image" />
-          <h3 style="color: var(--white); margin: 15px 0 5px 0;">Computadores</h3>
-          <p style="font-size: 16px; margin: 0;">Para trabalho e estudos</p>
-        </a>
-      </div>
-      <!-- PRODUTO 4 -->
-      <div class="product-card glass-card">
-        <a href="#">
-          <img src="./images/Notebook-Gamer.avif" 
-          alt="Notebooks" 
-          class="product-image" />
-          <h3 style="color: var(--white); margin: 15px 0 5px 0;">Notebooks</h3>
-          <p style="font-size: 16px; margin: 0;">Linha completa disponível</p>
-        </a>
-      </div>
     </div>
     <!-- BOTÃO VER MAIS PRODUTOS -->
     <div class="button-wrap mt-lg">
@@ -133,9 +101,9 @@
 </section>
   
   <!-- SEÇÃO SOBRE A EMPRESA -->
-  <section class="content-section" id="info">
+  <section class="content-section">
     <div>
-      <div class="flex-content">
+      <div class="flex-content" id="info">
         <div class="content-image-wrap">
           <img src="./images/programmer-612x612.jpg" 
           alt="Equipe Mtech Informática" 
@@ -173,59 +141,50 @@
         </div>
       </div>
       </div>
->>>>>>> Stashed changes
-    </div>
-    <!-- BOTÃO VER MAIS PRODUTOS -->
-    <div class="button-wrap mt-lg">
-      <a href="#catalogo">
-        <b><i class="fas fa-th"></i> Ver catálogo completo</b>
-      </a>
     </div>
   </div>
 </section>
-  
-  <!-- SEÇÃO SOBRE A EMPRESA -->
-  <section class="content-section" id="info">
-    <div class="flex-content">
-      <div class="content-image-wrap">
-        <img src="./images/programmer-612x612.jpg" 
-        alt="Equipe Mtech Informática" 
-        class="content-image" />
-      </div>
-      
-      <div class="content-text">
-        <h2 class="section-title">Quem Somos</h2>
-        <p class="section-subtitle">Sua parceira em tecnologia</p>
-        
-        <div class="text-block">
-          <p>A Mtech Informática é uma empresa especializada em tecnologia, fundada com o propósito de democratizar o acesso a equipamentos de qualidade.</p>
-          <p>Nossa equipe é formada por profissionais apaixonados por tecnologia, sempre prontos para encontrar a solução ideal para cada cliente.</p>
-        </div>
-        
-        <!-- CARACTERÍSTICAS DA EMPRESA -->
-        <div class="benefits-list" style="display: flex; flex-direction: column; gap: 15px;">
-          <div class="benefit-item glass-panel">
-            <i class="fas fa-award"></i>
-            <span>Mais de 10 anos no mercado</span>
-          </div>
-          
-          <div class="benefit-item glass-panel">
-            <i class="fas fa-users"></i>
-            <span>Milhares de clientes satisfeitos</span>
-          </div>
-          
-          <div class="benefit-item glass-panel">
-            <i class="fas fa-handshake"></i>
-            <span>Parcerias com grandes marcas</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- SEÇÃO DE CONTATO -->
   <section class="content-section" id="contact-section">
     <div class="flex-content" id="contact">
+      
+      <!-- FORMULÁRIO DE CONTATO -->
+      <div class="form-containe">
+        <div class="glass-panel" style="padding: 30px; flex-direction: column;">
+          <h3 style="color: var(--accent-primary); margin-top: 0;">Envie uma mensagem</h3>
+          
+          <form action="#" method="post" style="display: flex; flex-direction: column; gap: 15px;">
+            <input type="text" 
+            name="name" 
+            placeholder="Seu nome" 
+            required 
+            class="form-input" />
+            
+            <input type="email" 
+            name="email" 
+            placeholder="Seu e-mail" 
+            required 
+            class="form-input" />
+            
+            <input type="text" 
+            name="subject" 
+            placeholder="Assunto" 
+            required 
+            class="form-input" />
+            
+            <textarea name="message" 
+            placeholder="Sua mensagem..." 
+            required 
+            class="form-textarea"
+            rows="5"></textarea>
+            
+            <button type="submit" style="margin-top: 15px;">
+              <i class="fas fa-paper-plane"></i> Enviar mensagem
+            </button>
+          </form>
+        </div>
+      </div>
       <div class="content-text">
         <h2 class="section-title">Entre em Contato</h2>
         <p class="section-subtitle">Estamos aqui para ajudar</p>
@@ -258,46 +217,9 @@
           </div>
         </div>
       </div>
-      
-      <!-- FORMULÁRIO DE CONTATO -->
-      <div class="form-container">
-        <div class="glass-panel" style="padding: 30px; flex-direction: column;">
-          <h3 style="color: var(--accent-primary); margin-top: 0;">Envie uma mensagem</h3>
-          
-          <form action="#" method="post" style="display: flex; flex-direction: column; gap: 15px;">
-            <input type="text" 
-                   name="name" 
-                   placeholder="Seu nome" 
-                   required 
-                   class="form-input" />
-            
-            <input type="email" 
-                   name="email" 
-                   placeholder="Seu e-mail" 
-                   required 
-                   class="form-input" />
-            
-            <input type="text" 
-                   name="subject" 
-                   placeholder="Assunto" 
-                   required 
-                   class="form-input" />
-            
-            <textarea name="message" 
-                      placeholder="Sua mensagem..." 
-                      required 
-                      class="form-textarea"
-                      rows="5"></textarea>
-            
-            <button type="submit" style="margin-top: 15px;">
-              <i class="fas fa-paper-plane"></i> Enviar mensagem
-            </button>
-          </form>
-        </div>
-      </div>
     </div>
   </section>
-
+  
   <!-- SEÇÃO DE CHAMADA PARA AÇÃO -->
   <section class="content-section" style="margin-top: 50px;">
     <div class="flex-content" style="flex-direction: column; text-align: center;">

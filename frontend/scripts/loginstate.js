@@ -47,3 +47,5 @@ async function fetchWithTimeout(resource, options = {}, timeout = 5000) {
     throw new Error('Erro de conexão: Não foi possível acessar a API.');
   }
 }
+
+hideStatusMessage();

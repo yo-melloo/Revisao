@@ -1,98 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< Updated upstream
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/style.css" />
-    <title>MTech Login</title>
-  </head>
-  <body>
-    <header>
-      <nav class="top-nav">
-        <div class="top-nav-title">
-          <h1 class="header-title">Mtech Informática</h1>
-        </div>
-
-        <!-- Hamburger button (opcional) -->
-        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-        <label for="menu-toggle" class="menu-icon">&#9776;</label>
-
-        <ul class="top-nav-list">
-          <li class="has-submenu">
-            <a href="index.html">Página inicial</a>
-            <ul class="submenu" id="submenu-account">
-              <li><a href="#info">Quem somos</a></li>
-              <li><a href="#contato">Contato</a></li>
-            </ul>
-          </li>
-
-          <li class="has-submenu">
-            <a href="#produtos">Produtos</a>
-            <ul class="submenu" id="submenu-products">
-              <li><a href="#perifericos">Periféricos</a></li>
-              <li><a href="#monitores">Monitores</a></li>
-              <li><a href="#computadores">Computadores</a></li>
-              <li><a href="#hardware">Hardware</a></li>
-            </ul>
-          </li>
-
-          <li class="has-submenu">
-            <a href="#carrinho">Carrinho</a>
-            <ul class="submenu" id="submenu-cart">
-              <li><a href="#checkout">Fazer checkout</a></li>
-            </ul>
-          </li>
-
-          <li class="has-submenu">
-            <a href="#conta">Conta</a>
-            <ul class="submenu" id="submenu-account">
-              <li><a href="/frontend/login.html">Login</a></li>
-              <li><a href="#sair">Sair</a></li>
-            </ul>
-          </li>
-        </ul>
-
-        <div class="search-box">
-          <input
-            type="text"
-            name="header-search-input"
-            class="search-input"
-            placeholder="Pesquisar..."
-          />
-        </div>
-      </nav>
-    </header>
-
-    <section class="content-section">
-      <div class="login-panel">
-        <img src="images/nouser.png" alt="Usuário" class="login-avatar" />
-
-        <h2>Login</h2>
-
-        <form>
-          <input type="email" placeholder="E-mail" required />
-          <input type="password" placeholder="Senha" required />
-
-          <div class="password-reset">
-            <label class="checkbox">
-              <input type="checkbox" />
-              <span>Manter conectado</span>
-            </label>
-            <a href="#">Esqueci a senha</a>
-          </div>
-
-          <button type="submit">Entrar</button>
-        </form>
-      </div>
-    </section>
-
-    <footer>
-      <p class="footer-text">Desenvolvido por @yo-melloo (github)</p>
-    </footer>
-  </body>
-</html>
-=======
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
@@ -101,18 +7,15 @@
   <link rel="stylesheet" href="./styles/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <script src="./scripts/login.js"></script>
-  <script src="./scripts/loginstate.js"></script>
-  <script src="./scripts/layout-adjust.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <title>Login | Mtech Informática</title>
 </head>
 <body>
-
+  
   <div id="site-header" style="width: 100%"></div>
-
-    <!-- SEÇÃO PRINCIPAL COM LOGIN PANEL ANIMADO -->
+  
+  <!-- SEÇÃO PRINCIPAL COM LOGIN PANEL ANIMADO -->
   <section class="content-section">
     <div class="flex-content">
       <!-- PAINEL DE LOGIN -->
@@ -137,7 +40,7 @@
           </button>
         </form> <!-- <-- FORM FECHANDO NO LUGAR CERTO -->
       </div>
-
+      
       <!-- SEÇÃO DE TEXTO INFORMATIVO (mantém igual) -->
       <div class="content-text">
         <h2 class="section-title">Entre na sua conta</h2>
@@ -167,13 +70,15 @@
       </div>
     </div>
   </section>
-
-
-<div id="site-footer" style="width: 100%"></div>
-
+  
+  
+  <div id="site-footer" style="width: 100%"></div>
+  
   <!-- SCRIPT PARA MELHORIAS DE ACESSIBILIDADE -->
+  <script src="./scripts/login.js"></script>
+  <script src="./scripts/loginstate.js"></script>
+  <script src="./scripts/layout-adjust.js"></script>
   <script>
-
     // Adiciona suporte a navegação por teclado no menu
     document.addEventListener('DOMContentLoaded', function() {
       const menuItems = document.querySelectorAll('.has-submenu > a');
@@ -215,4 +120,3 @@
 </script>
 </body>
 </html>
->>>>>>> Stashed changes
