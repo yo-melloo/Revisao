@@ -1,52 +1,56 @@
-async function login(login, password) {
-  try {
-    const resp = await fetch("https://glorious-funicular-jj594qxx977jcpjgq-8080.app.github.dev/api/auth/login", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({login, password})
-    });
+//login.js
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('login-form');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    hideStatusMessage();
+    setLoginState(null);
 
-    if (resp.status === 403) {
-      alert("Usuário ou senha inválidos!");
-      return;
+    const loginValue = form.login.value;
+    const passwordValue = form.password.value;
+
+    try {
+      const resp = await fetchWithTimeout(
+        "https://glorious-funicular-jj594qxx977jcpjgq-8080.app.github.dev/api/auth/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ login: loginValue, password: passwordValue })
+        },
+        5000 // timeout de 5s
+      );
+
+      let data = {};
+      const contentType = resp.headers.get('content-type') || '';
+      if (contentType.includes('application/json')) {
+        data = await resp.json();
+      }
+
+      if (resp.ok && data.token) {
+        setLoginState("success");
+        showStatusMessage("Login bem-sucedido!", "green");
+        localStorage.setItem("token", data.token);
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 700);
+        return data;
+      } else {
+        setLoginState("error");
+        if (resp.status === 403) {
+          showStatusMessage("Acesso negado. Verifique suas credenciais.", "red");
+          throw new Error("Acesso negado. Verifique suas credenciais.");
+        } else if (resp.status === 401) {
+          showStatusMessage("Deu red aquikkkkk", "red");
+          throw new Error("Acesso negado. Verifique suas credenciais.");
+        } else {
+          showStatusMessage(data.message || "Usuário ou senha inválidos!", "red");
+          throw new Error(data.message || "Usuário ou senha inválidos!");
+        }
+      }
+    } catch (err) {
+      setLoginState("error");
+      showStatusMessage(err.message || "Erro inesperado!", "red");
+      // O throw pode ser omitido se não quiser "propagar" para o console
     }
-
-    const data = await resp.json();
-    
-    if (resp.ok && data.token) {
-      // Login sucesso
-      alert("Login realizado com sucesso!");
-      // Armazena o token no localStorage
-      localStorage.setItem('token', data.token);
-      // Redireciona para a página principal após 1 segundo
-      setTimeout(() => {
-        window.location.href = '/frontend/index.html';
-      }, 1000);
-    } else {
-      // Erro no login
-      alert(data.message || "Usuário ou senha inválidos!");
-    }
-  } catch (err) {
-    console.error(err);
-    alert("Erro de conexão com o servidor.");
-  }
-}
-
-function showAlert(message, type) {
-  const alertClass = type === 'success' ? 'alert-success' : 'alert-error';
-  const alertDiv = document.createElement('div');
-  alertDiv.className = `alert ${alertClass}`;
-  alertDiv.textContent = message;
-  
-  // Remove alertas anteriores
-  const existingAlerts = document.querySelectorAll('.alert');
-  existingAlerts.forEach(alert => alert.remove());
-  
-  // Adiciona o novo alerta no topo da página
-  document.body.insertBefore(alertDiv, document.body.firstChild);
-  
-  // Remove o alerta após 3 segundos
-  setTimeout(() => {
-    alertDiv.remove();
-  }, 3000);
-}
+  });
+});
