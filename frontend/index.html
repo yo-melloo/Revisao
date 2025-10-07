@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Link para o novo CSS com glassmorphism aprimorado -->
   <link rel="stylesheet" href="./styles/style.css" />
-  <script src="./scripts/layout-adjust.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -38,7 +37,7 @@
       <div class="content-image-wrap" 
              style="background-image: url(https://static.vecteezy.com/ti/vetor-gratis/t2/602514-fundo-da-arquitectura-da-cidade-da-silhueta-das-construcoes-arquitetura-moderna-paisagem-urbana-da-cidade-gratis-vetor.jpg); overflow: visible; height: 150px; border-radius: 16px;">
         <img src="./images/mulher-notebook-transparente.png" 
-             alt="Mtech Informática - Sua loja de tecnologia" 
+        alt="Mtech Informática - Sua loja de tecnologia" 
              class="content-image" />
       </div>
     </div>
@@ -47,11 +46,11 @@
   <!-- SEÇÃO DE PRODUTOS EM DESTAQUE -->
   <section class="content-section" id="produtos">
     <div class="product-panel">
-  <h2 class="section-title mb-lg">Produtos em Destaque</h2>
+      <h2 class="section-title mb-lg" style="width: 100%;">Produtos em Destaque</h2>
   <!-- GRID DE PRODUTOS COM GLASSMORPHISM -->
     <div class="product-flex glassy">
       <!-- PRODUTO 1 -->
-      <div class="product-card glass-card">
+      <div class="product-card glass-card glassy">
         <a href="#">
           <img src="./images/PC-Gamer.png" 
           alt="PC Gamer Pichau Anfitrite" 
@@ -140,38 +139,38 @@
           </div>
         </div>
       </div>
-      </div>
+    </div>
     </div>
   </div>
 </section>
 
-  <!-- SEÇÃO DE CONTATO -->
-  <section class="content-section" id="contact-section">
-    <div class="flex-content" id="contact">
-      
-      <!-- FORMULÁRIO DE CONTATO -->
-      <div class="form-containe">
-        <div class="glass-panel" style="padding: 30px; flex-direction: column;">
-          <h3 style="color: var(--accent-primary); margin-top: 0;">Envie uma mensagem</h3>
+<!-- SEÇÃO DE CONTATO -->
+<section class="content-section" id="contact-section">
+  <div class="flex-content" id="contact">
+    
+    <!-- FORMULÁRIO DE CONTATO -->
+    <div class="form-containe">
+      <div class="glass-panel" style="padding: 30px; flex-direction: column;">
+        <h3 style="color: var(--accent-primary); margin-top: 0;">Envie uma mensagem</h3>
+        
+        <form action="#" method="post" style="display: flex; flex-direction: column; gap: 15px;">
+          <input type="text" 
+          name="name" 
+          placeholder="Seu nome" 
+          required 
+          class="form-input" />
           
-          <form action="#" method="post" style="display: flex; flex-direction: column; gap: 15px;">
-            <input type="text" 
-            name="name" 
-            placeholder="Seu nome" 
-            required 
-            class="form-input" />
-            
-            <input type="email" 
-            name="email" 
-            placeholder="Seu e-mail" 
-            required 
-            class="form-input" />
-            
-            <input type="text" 
-            name="subject" 
-            placeholder="Assunto" 
-            required 
-            class="form-input" />
+          <input type="email" 
+          name="email" 
+          placeholder="Seu e-mail" 
+          required 
+          class="form-input" />
+          
+          <input type="text" 
+          name="subject" 
+          placeholder="Assunto" 
+          required 
+          class="form-input" />
             
             <textarea name="message" 
             placeholder="Sua mensagem..." 
@@ -245,11 +244,12 @@
       </div>
     </div>
   </section>
-
+  
   <!-- FOOTER COM GLASSMORPHISM -->
-<div id="site-footer" style="width: 95%; border-radius: 16px;"></div>
-
+  <div id="site-footer" style="width: 95%; border-radius: 16px;"></div>
+  
   <!-- SCRIPT PARA FUNCIONALIDADES INTERATIVAS -->
+  <script src="./scripts/layout-adjust.js"></script>
   <script>
     // Navegação suave para âncoras
     document.addEventListener('DOMContentLoaded', function() {
