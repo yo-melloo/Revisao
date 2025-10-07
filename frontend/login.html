@@ -19,16 +19,16 @@
   <section class="content-section">
     <div class="flex-content">
       <!-- PAINEL DE LOGIN -->
-      <div class="login-panel glass-card">
+      <div class="login-panel glass-card autoexpand">
         <img src="./images/avatar.png" alt="Avatar de Login" class="login-avatar" />
         <h2>Bem-vindo de volta!</h2>
         <div style="text-align: center; margin-bottom: 10px;">
-          <p id="status-message" style="color: red; font-size: 11px;">mensagem-de-status</p>
+          <p id="status-message" class="fade-status" style="color: red; font-size: 16px;"></p>
         </div>          
         <form id="login-form" method="post">
           <input type="login" name="login" placeholder="Seu nome de usuário" required autocomplete="login" />
           <input type="password" name="password" placeholder="Sua senha" required autocomplete="current-password" />
-          <div class="password-reset">
+          <div class="password-reset" style="font-size: 15px;">
             <label class="checkbox">
               <input type="checkbox" name="remember" />
               <span>Lembrar-me</span>
@@ -78,7 +78,8 @@
   <script src="./scripts/login.js"></script>
   <script src="./scripts/loginstate.js"></script>
   <script src="./scripts/layout-adjust.js"></script>
-  <script>
+  <script src="./scripts/forms-animations.js"></script>
+  <script>    
     // Adiciona suporte a navegação por teclado no menu
     document.addEventListener('DOMContentLoaded', function() {
       const menuItems = document.querySelectorAll('.has-submenu > a');

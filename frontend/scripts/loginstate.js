@@ -1,4 +1,15 @@
 //loginstate.js
+hideStatusMessage();
+
+function hideStatusMessage() {
+  const statusMessage = document.getElementById('status-message');
+  if (!statusMessage) return;
+  statusMessage.classList.remove('show');
+  setTimeout(() => {
+    statusMessage.textContent = "";
+    statusMessage.style.color = "";
+  }, 400);
+}
 function setLoginState(state) {
   const panel = document.querySelector('.login-panel');
   panel.classList.remove('status--error', 'status--success');
@@ -17,15 +28,6 @@ function showStatusMessage(msgText, color = "red") {
   statusMessage.classList.add('show');
 }
 
-function hideStatusMessage() {
-  const statusMessage = document.getElementById('status-message');
-  if (!statusMessage) return;
-  statusMessage.classList.remove('show');
-  setTimeout(() => {
-    statusMessage.textContent = "";
-    statusMessage.style.color = "";
-  }, 400);
-}
 
 // Função fetch com timeout
 async function fetchWithTimeout(resource, options = {}, timeout = 5000) {
@@ -48,4 +50,12 @@ async function fetchWithTimeout(resource, options = {}, timeout = 5000) {
   }
 }
 
-hideStatusMessage();
+const loginPanel = document.querySelector('.login-panel');
+if (loginPanel) {
+  const fields = loginPanel.querySelectorAll('input, textarea');
+  fields.forEach(field => {
+    field.addEventListener('input', hideStatusMessage);
+
+  });
+}
+

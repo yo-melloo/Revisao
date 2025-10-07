@@ -22,14 +22,14 @@
           3. Zoom do avatar (cresce de 100px para 140px)
           4. Revelação do formulário (fade-in + slide-up)
           -->
-          <div class="login-panel glass-card">
+          <div class="login-panel glass-card autoexpand">
             <!-- AVATAR QUE CRESCE NO HOVER -->
             <img src="images/avatar.png" alt="Usuário" class="login-avatar" />
             
             <h2>Criar conta</h2>
             
             <form>
-              <input type="username" placeholder="Nome de Usuário" required />
+              <input type="login" name="login" placeholder="Seu nome de usuário" required autocomplete="login" />
               <input type="email" placeholder="E-mail" required />
               <input type="password" id="senha" placeholder="Senha" required />
               <input type="password" id="confirmar-senha" placeholder="Confirmar Senha" required />          
@@ -76,6 +76,9 @@
 </section>
 
     <div id="site-footer" style="width: 100%"></div>  
+
+    
+  <script src="./scripts/forms-animations.js"></script>
   <script>
     // Auto-focus no primeiro input quando o painel expandir
       const loginPanel = document.querySelector('.login-panel');

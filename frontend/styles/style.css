@@ -1411,6 +1411,7 @@ section.content-section {
   justify-content: center;
   align-self: center;
   overflow: hidden;
+  border-radius: 16px;
 }
 .content-image {
   width: auto;
@@ -1491,9 +1492,10 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
   max-width: 280px;
-  min-height: 200px;
+  min-height: 350px;
   background: var(--color-surface);
   backdrop-filter: blur(var(--blur-amount));
   -webkit-backdrop-filter: blur(var(--blur-amount));
@@ -1503,33 +1505,26 @@ button:hover {
   color: var(--color-text);
   padding: var(--space-lg);
   transition:
-    background 800ms,
-    box-shadow 800ms,
-    border-color 800ms,
-    max-width 1800ms cubic-bezier(0.25, 0.8, 0.25, 1),
-    min-height 1800ms cubic-bezier(0.25, 0.8, 0.25, 1),
-    padding 1200ms cubic-bezier(0.25, 0.8, 0.25, 1);
-  overflow: hidden;
-  position: relative;
+    background 300ms ease-out,
+    box-shadow 300ms ease-out,
+    border-color 300ms ease-out,
+    max-width 1000ms cubic-bezier(0.25, 0.1, 0.25, 1),
+    min-height 1000ms cubic-bezier(0.25, 0.1, 0.25, 1),
+    padding 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-
-/* Borda quando status é sucesso */
 .login-panel.status--success {
   box-shadow: 0 0 0 4px rgba(33,128,141,0.12);
-  border-color: var(--color-success, #0daa27) !important; /* verde, personalize se quiser */
+  border-color: var(--color-success, #0daa27) !important;
 }
 
-
-/* Borda quando status é erro */
 .login-panel.status--error {
-  box-shadow: 0 0 0 4px rgba(192,21,47,0.12);
-  border-color: var(--color-error, #c0152f) !important; /* vermelho, personalize se quiser */
+  animation: glowingError 1.5s ease-in-out infinite !important;
 }
 
 .fade-status {
   opacity: 0;
-  transition: opacity .38s cubic-bezier(.38,.9,.46,1);
+  transition: opacity 300ms ease-out;
   color: red;
   font-size: 11px;
   margin: 0;
@@ -1541,18 +1536,42 @@ button:hover {
   opacity: 1;
 }
 
-
-/* ==================== ANIMAÇÃO 1: EXPANSÃO DO PAINEL ==================== */
-.login-panel:hover,
-.login-panel:focus-within {
-  max-width: 420px;
-  min-height: 600px;
+/* ====== EXPANSÃO FIXA SOMENTE SE .autoexpand (ex: login) ====== */
+.login-panel.autoexpand.expanded {
+  max-width: 560px;
+  min-height: 700px;
   padding: var(--space-2xl);
   animation: glowingEffect 1.5s ease-in-out infinite;
   box-shadow: var(--shadow-lg);
 }
 
-/* ==================== ANIMAÇÃO 2: EFEITO DE BRILHO PULSANTE ==================== */
+/* ====== REVELAÇÃO DO FORMULÁRIO FIXA PARA .autoexpand.expanded ====== */
+.login-panel.autoexpand.expanded form,
+.login-panel.autoexpand.expanded .password-reset {
+  display: block;
+  transform: translateY(0);
+}
+
+/* ====== Funcionamento normal com hover/focus para os demais ====== */
+.login-panel form,
+.login-panel .password-reset {
+  display: none;
+  transform: translateY(30px);
+  transition: 
+    transform 300ms ease-out,
+    opacity 300ms ease-out;
+  width: 100%;
+}
+
+.login-panel:hover form,
+.login-panel:hover .password-reset,
+.login-panel:focus-within form,
+.login-panel:focus-within .password-reset {
+  display: block;
+  transform: translateY(0);
+}
+
+/* ==================== RESTANTE DAS ANIMAÇÕES ==================== */
 @keyframes glowingEffect {
   0% {
     box-shadow: var(--shadow-md);
@@ -1568,7 +1587,21 @@ button:hover {
   }
 }
 
-/* ==================== ANIMAÇÃO 3: ZOOM DO AVATAR ==================== */
+@keyframes glowingError {
+  0% {
+    box-shadow: var(--shadow-md);
+  }
+  50% {
+    box-shadow:
+      0 8px 32px rgba(192,21,47,0.6),
+      0 0 40px rgba(192,21,47,0.3),
+      var(--shadow-lg);
+  }
+  100% {
+    box-shadow: var(--shadow-md);
+  }
+}
+
 .login-avatar {
   width: 100px;
   height: 100px;
@@ -1576,7 +1609,10 @@ button:hover {
   background: var(--color-secondary);
   padding: var(--space-sm);
   margin: 0 auto var(--space-md) auto;
-  transition: all 1500ms;
+  transition: 
+    width 600ms cubic-bezier(0.25, 0.1, 0.25, 1) 150ms,
+    height 600ms cubic-bezier(0.25, 0.1, 0.25, 1) 150ms,
+    box-shadow 600ms cubic-bezier(0.25, 0.1, 0.25, 1) 150ms;
   box-shadow: 0 4px 12px rgba(var(--color-primary-rgb, 33, 128, 141), 0.2);
   display: block;
 }
@@ -1588,34 +1624,17 @@ button:hover {
   box-shadow: 0 4px 20px rgba(var(--color-primary-rgb, 33, 128, 141), 0.4);
 }
 
-/* ==================== TÍTULO DO PAINEL ==================== */
 .login-panel h2 {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-semibold);
   margin: var(--space-md) 0;
   text-align: center;
   color: var(--accent-primary);
-  transition: all var(--transition-slow);
+  transition: 
+    color 300ms ease-out,
+    transform 300ms ease-out;
 }
 
-/* ==================== ANIMAÇÃO 4: REVELAÇÃO DO FORMULÁRIO ==================== */
-.login-panel form,
-.login-panel .password-reset {
-  display: none;
-  transform: translateY(30px);
-  transition: all var(--transition-slow);
-  width: 100%;
-}
-
-.login-panel:hover form,
-.login-panel:hover .password-reset,
-.login-panel:focus-within form,
-.login-panel:focus-within .password-reset {
-  display:block;
-  transform: translateY(0);
-}
-
-/* ==================== INPUTS DO FORMULÁRIO ==================== */
 .login-panel input[type="login"],
 .login-panel input[type="email"],
 .login-panel input[type="text"],
@@ -1624,87 +1643,36 @@ button:hover {
   padding: var(--space-md);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  
   background: var(--color-secondary);
   backdrop-filter: blur(10px);
-  
   font-size: var(--font-size-base);
   color: var(--color-text);
   margin-bottom: var(--space-sm);
-  
-  transition: all var(--transition-fast);
+  transition: 
+    border-color 200ms ease-out,
+    background 200ms ease-out,
+    box-shadow 200ms ease-out;
 }
 
 .login-panel input::placeholder {
-  color: var(--color-text-secondary);
-}
+  color: var(
 
-.login-panel input:focus {
-  outline: var(--focus-outline);
-  border-color: var(--accent-primary);
-  background: var(--color-secondary-hover);
-  box-shadow: var(--focus-ring);
-}
-
-/* ==================== ÁREA DE RESET DE SENHA ==================== */
-.password-reset {
-  padding: 5px 5px 5px 5px;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  font-size: var(--font-size-sm);
-  margin-bottom: var(--space-md);
-  flex-wrap: nowrap;
-}
-
-.login-panel .password-reset a {
-  color: var(--accent-primary);
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-
-.login-panel .password-reset a:hover {
-  text-decoration: underline;
-  color: var(--accent-secondary);
-}
-
-.checkbox {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-}
-
-/* ==================== BOTÃO DO FORMULÁRIO ==================== */
-.login-panel button {
-  width: 100%;
-  padding: var(--space-md) 0;
-  border-radius: var(--radius-sm);
-  background: var(--accent-primary);
-  color: var(--color-btn-primary-text);
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-base);
-  border: none;
-  cursor: pointer;
-  margin-top: var(--space-sm);
-  
-  box-shadow: 0 4px 12px rgba(var(--color-primary-rgb, 33, 128, 141), 0.3);
-  transition: all var(--transition-fast);
-}
-
-.login-panel button:hover {
-  background: var(--accent-secondary);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(var(--color-primary-rgb, 33, 128, 141), 0.4);
-}
 
 /* ==================== CARDS DE PRODUTO ==================== */
+.product-panel{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .product-flex {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 15px;
   justify-content: center;
-  flex-wrap: nowrap;
   align-items: stretch;
+  align-content: center;
+  flex-wrap: nowrap;
   padding: 30px;
   width: 90%;
 }
@@ -1947,12 +1915,6 @@ footer {
   .product-image { 
     max-width: 90%; 
     max-height: 60%; 
-  }
-  
-  .login-panel { 
-    max-width: 90%; 
-    min-height: auto; 
-    padding: var(--space-lg); 
   }
   
   .login-panel:hover,
