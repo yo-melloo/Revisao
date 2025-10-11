@@ -15,7 +15,9 @@ public class CorsConfig {
             public void addCorsMappings(@NonNull CorsRegistry registry) {
                 registry.addMapping("/api/**")
                         .allowedOrigins("http://localhost:3000", "http://127.0.0.1:5500",
-                                "https://glorious-funicular-jj594qxx977jcpjgq-5500.app.github.dev")
+                                "https://glorious-funicular-jj594qxx977jcpjgq-5500.app.github.dev",
+                                "https://glorious-funicular-jj594qxx977jcpjgq-43767.app.github.dev",
+                                "http://152.67.54.131:3000")
                         .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
