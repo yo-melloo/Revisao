@@ -28,11 +28,12 @@
             
             <h2>Criar conta</h2>
             
-            <form>
-              <input type="login" placeholder="Nome de Usuário" required />
-              <input type="email" placeholder="E-mail" required />
-              <input type="password" id="senha" placeholder="Senha" required />
-              <input type="password" id="confirmar-senha" placeholder="Confirmar Senha" required />          
+            <form id="login-form">
+              <input type="text" name="name" placeholder="Nome Completo" required />
+              <input type="text" name="login" placeholder="Nome de Usuário" required />
+              <input type="email" name="email" placeholder="E-mail" required />
+              <input type="password" name="password" id="senha" placeholder="Senha" required />
+              <input type="password" name="confirmar-senha" id="confirmar-senha" placeholder="Confirmar Senha" required />          
               <button type="submit">Finalizar</button>
             </form>
           </div>
@@ -76,10 +77,11 @@
 </section>
 
     <div id="site-footer" style="width: 100%"></div>  
+  <script src="scripts/signup.js"></script>
   <script>
     // Auto-focus no primeiro input quando o painel expandir
       const loginPanel = document.querySelector('.login-panel');
-      const firstInput = loginPanel.querySelector('input[type="username"]');
+      const firstInput = loginPanel.querySelector('input[type="text"]');
       
       loginPanel.addEventListener('mouseenter', () => {
         setTimeout(() => firstInput.focus(), 300);
