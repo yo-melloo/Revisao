@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     try {
       const resp = await fetchWithTimeout(
-        "https://glorious-funicular-jj594qxx977jcpjgq-8080.app.github.dev/api/auth/login",
+        "http://localhost:8080/api/auth/login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showStatusMessage("Login bem-sucedido!", "green");
         localStorage.setItem("token", data.token);
         setTimeout(() => {
-          window.location.href = "index.html";
+          window.location.href = "profile.html";
         }, 700);
         return data;
       } else {
@@ -53,4 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // O throw pode ser omitido se não quiser "propagar" para o console
     }
   });
+
+
+
 });

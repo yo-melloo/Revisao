@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <title>Perfil do Usuário | Mtech Informática</title>
+  <style>
+
+    .profile-panel {
+      min-width: 340px;
+      max-width: 400px;
+      padding: 32px 24px 32px 24px;
+      background: rgba(255,255,255,0.17);
+      border-radius: 20px;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.10);
+      text-align: center;
+      font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+      margin-bottom: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .profile-avatar {
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #fafafa;
+      border: 2px solid #eee;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.08);
+    }
+    .profile-name {
+      font-size: 1.6em;
+      font-weight: 800;
+      margin-bottom: 7px;
+    }
+    .profile-username { color: #7131b0; font-weight: 700; margin-bottom: 6px; font-size: 1.1em; }
+    .profile-email { color: #446; margin-bottom: 15px; font-size: 1em; }
+    .logout-btn {
+      margin-top: 12px;
+      background: #efe5ff;
+      border: none;
+      color: #7131b0;
+      font-weight: 700;
+      padding: 8px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(80, 25, 195, 0.08);
+    }
+    .manage-panel {
+      flex: 1;
+      padding: 28px 28px 28px 34px;
+      background: rgba(255,255,255,0.14);
+      border-radius: 18px;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.07);
+      font-family: 'Open Sans', Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      margin-bottom: 24px;
+      align-items: flex-start;
+      min-width: 350px;
+      max-width: 650px;
+    }
+    .section-title { font-size: 2em; font-weight: 700; margin-bottom: 12px; }
+    .section-subtitle { font-size: 1.1em; color: #7131b0; margin-bottom: 18px; }
+    .edit-msg { color: #7131b0; font-weight: 600; font-size: 1.1em; margin-bottom: 10px;}
+    #loading { margin-top: 50px; color: #7131b0; font-size: 1.1em; font-weight: 700; text-align: center;}
+  </style>
+</head>
+<body>
+  <div id="site-header" style="width: 100%;"></div>
+  <div id="loading">Carregando perfil...</div>
+  <section class="content-section">
+    <div class="flex-content">
+      
+      <!-- Perfil à esquerda -->
+      <div class="profile-panel glass-card" id="profile" style="display:none"></div>
+
+      <!-- Gerenciamento à direita -->
+      <div class="manage-panel">
+        <h2 class="section-title">Gerenciar dados</h2>
+        <p class="section-subtitle">Altere suas informações ou personalize seu perfil</p>
+        <p class="edit-msg">Funcionalidade de edição em breve. Você poderá atualizar nome, e-mail e avatar.</p>
+        <!-- Aqui depois insira seu formulário PATCH -->
+        <ul>
+          <li>Histórico de pedidos (em construção)</li>
+          <li>Meus papéis/acessos</li>
+          <li>Configurações da conta</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <div id="site-footer" style="width: 80%;"></div>
+  <script src="scripts/layout-adjust.js"></script>
+  <script>
+    async function loadUser() {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert("Inicie uma sessão para acessar.");
+        window.location.href = "login.html";
+        return;
+      }
+      try {
+        const resp = await fetch('http://localhost:8080/api/users/me', {
+          method: 'GET',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (!resp.ok) throw new Error("Sessão expirada ou usuário inválido");
+        const user = await resp.json();
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('profile').style.display = 'flex';
+        document.getElementById('profile').innerHTML = `
+          <img class="profile-avatar" src="${user.avatar || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(user.name || user.username)}" alt="Avatar do Usuário">
+          <div class="profile-name">${user.name || "Sem nome"}</div>
+          <div class="profile-username"><i class="fa fa-user"></i> ${user.username}</div>
+          <div class="profile-email"><i class="fa fa-envelope"></i> ${user.email}</div>
+          <button class="logout-btn" onclick="logout()">Sair</button>
+        `;
+      } catch (err) {
+        document.getElementById('loading').style.display = 'none';
+        alert("Sessão expirada! Faça login novamente.");
+        localStorage.removeItem('token');
+        window.location.href = "login.html";
+      }
+    }
+    function logout() {
+      localStorage.removeItem('token');
+      window.location.href = "login.html";
+    }
+    document.addEventListener('DOMContentLoaded', loadUser);
+  </script>
+</body>
+</html>
