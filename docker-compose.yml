@@ -1,8 +1,9 @@
-version: "3.3"
+version: "3.8"
+
 services:
   db:
     image: postgres:13
-    restart: always
+    container_name: postgres-db
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: root
@@ -10,6 +11,24 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
-      - "6432:5432" # Mapeia a porta do contêiner para o workspace
+      - "6432:5432"
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile   # ou "dockerfile" se não renomear o arquivo
+    container_name: spring-backend
+    environment:
+      JWT_KEY : "teA2jQL39qqWySK9kHOVlgcfCLMd7zVPp4rwdy48FRw="
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/mtech
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: root
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db
+    restart: unless-stopped
+
 volumes:
   postgres_data:
