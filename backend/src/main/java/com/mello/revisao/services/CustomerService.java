@@ -11,20 +11,20 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
 
-    public CustomerService(CustomerRepository customerRepository){
+    public CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
-    public List<Customer> mostrarClientes(){
+    public List<Customer> mostrarClientes() {
         return customerRepository.findAll();
     }
 
-    public Customer buscarPorID(Long id){
+    public Customer buscarPorID(Long id) {
         return customerRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("ID " + id + " não encontrado!"));
     }
 
-    public Customer salvar(Customer customer){
+    public Customer salvar(Customer customer) {
         System.out.println("Cliente registrado com sucesso!");
         return customerRepository.save(customer);
     }
@@ -51,7 +51,7 @@ public class CustomerService {
                 }).orElseThrow(() -> new RuntimeException("ID " + id + " não encontrado!"));
     }
 
-    public void deletar(Long id){
+    public void deletar(Long id) {
         if (!customerRepository.existsById(id)) {
             throw new RuntimeException("ID " + id + " não encontrado!");
         }

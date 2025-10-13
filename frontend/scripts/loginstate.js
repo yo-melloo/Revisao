@@ -44,7 +44,7 @@ async function fetchWithTimeout(resource, options = {}, timeout = 5000) {
       throw new Error('Erro de Timeout: estamos possivelmente fora do ar, pedimos desculpas.');
     }
     // Erro genérico de conexão/fetch
-    throw new Error('Erro de conexão: Não foi possível acessar a API.');
+    throw new Error('Não foi possível estabelecer uma conexão com o servidor. Tente novamente mais tarde.');
   }
 }
 

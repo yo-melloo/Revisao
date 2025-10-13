@@ -1,6 +1,6 @@
 async function login(login, password) {
   try {
-    const resp = await fetch("https://glorious-funicular-jj594qxx977jcpjgq-8080.app.github.dev/api/auth/register", {
+    const resp = await fetch("http://localhost:8080/api/auth/register", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({login, password})
