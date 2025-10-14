@@ -42,7 +42,7 @@ public class UserModel implements UserDetails {
 
     private String avatar;
 
-    public UserModel(String login, String password, UserRole role, String email, String name) {
+    public UserModel(String login, String password, UserRole role, String name, String email) {
         this.login = login;
         this.password = password;
         this.role = role;

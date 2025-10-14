@@ -10,6 +10,7 @@ import com.mello.revisao.security.TokenService;
 import jakarta.validation.Valid;
 
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -67,6 +68,8 @@ public class AutenticationController {
     public ResponseEntity<Object> register(@RequestBody @Valid RegisterDTO data) {
         System.out.println("=== Processo de Registro ===");
 
+	System.out.println("DADOS RECEBIDOS: " + data);
+
         // valida se email e nome e login informados não são nulos ou vazios
         if (data.login() == null || data.login().isBlank() || data.name() == null || data.email() == null
                 || data.name().isBlank() || data.email().isBlank()) {
@@ -74,14 +77,12 @@ public class AutenticationController {
         }
 
         // valida se usuário já existe
-        if (this.userRepository.findByLogin(data.login()) != null) {
+	Optional<UserModel> existingUser = this.userRepository.findByLogin(data.login());
+        if (existingUser.isPresent()) {
+	    System.out.println("Durante verificação do usuário, foi encontrado no repositório: " + existingUser + " impedindo o novo registro no banco de dados.");
             return ResponseEntity.badRequest().body("Este usuário já existe!");
         }
 
-        System.out.println("DADOS RECEBIDOS: " + data);
-        if (this.userRepository.findByLogin(data.login()) != null) {
-            return ResponseEntity.badRequest().build();
-        }
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
 

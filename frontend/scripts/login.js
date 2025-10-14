@@ -1,4 +1,7 @@
 //login.js
+
+// Testando no neovim
+
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('login-form');
   form.addEventListener('submit', async function(e) {
@@ -11,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     try {
       const resp = await fetchWithTimeout(
-        "http://localhost:8080/api/auth/login",
+        "http://152.67.54.131:8081/api/auth/login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
