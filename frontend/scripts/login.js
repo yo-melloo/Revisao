@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     try {
       const resp = await fetchWithTimeout(
-        "http://152.67.54.131:8081/api/auth/login",
+        (window.ENV.API_BASE_URL + "/auth/login"),
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

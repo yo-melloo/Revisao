@@ -96,6 +96,7 @@
     </div>
   </section>
   <div id="site-footer" style="width: 80%;"></div>
+  <script src="./env.js"></script>
   <script src="scripts/layout-adjust.js"></script>
   <script>
     async function loadUser() {
@@ -106,7 +107,7 @@
         return;
       }
       try {
-        const resp = await fetch('http://152.67.54.131:8081/api/users/me', {
+        const resp = await fetch(window.ENV.API_BASE_URL + '/users/me', {
           method: 'GET',
           headers: { 'Authorization': `Bearer ${token}` }
         });

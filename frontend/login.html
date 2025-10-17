@@ -75,6 +75,7 @@
   <div id="site-footer" style="width: 100%"></div>
   
   <!-- SCRIPT PARA MELHORIAS DE ACESSIBILIDADE -->
+   <script src="./env.js"></script>
   <script src="./scripts/login.js"></script>
   <script src="./scripts/loginstate.js"></script>
   <script src="./scripts/layout-adjust.js"></script>
@@ -92,15 +93,6 @@
           }
         });
       });
-      
-      // Auto-focus no primeiro input quando o painel expandir
-      const loginPanel = document.querySelector('.login-panel');
-      const firstInput = loginPanel.querySelector('input[type="text"]');
-      
-      loginPanel.addEventListener('mouseenter', () => {
-        setTimeout(() => firstInput.focus(), 300);
-      });
-    });
 
     document.addEventListener('DOMContentLoaded', function() {
       const form = document.getElementById('login-form');

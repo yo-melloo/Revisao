@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     try {
-      const response = await fetch('https://glorious-funicular-jj594qxx977jcpjgq-8080.app.github.dev/api/auth/register', {
+      const response = await fetch(window.ENV.API_BASE_URL + '/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const data = await response.json();
         console.log('Usuário criado com sucesso:', data);
         alert('Usuário criado com sucesso!');
-        window.location.href = '/login.html';
+        window.location.href = './login.html';
       } else {
         // Lê a mensagem de erro enviada pela API
         const errorText = await response.text();
